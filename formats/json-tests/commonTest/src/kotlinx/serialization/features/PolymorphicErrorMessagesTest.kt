@@ -68,9 +68,10 @@ class PolymorphicErrorMessagesTest : JsonTestBase() {
         checkEncodingException(mode, {
             default.encodeToString(Holder.serializer(), input)
         }) {
-            message("Serializer for subclass 'StringData' is not found in the polymorphic scope of 'Any'")
-            hint("Check if class with serial name 'StringData' exists and serializer is registered in a corresponding SerializersModule.")
-            serialName("StringData")
+            val className = StringData::class.qualifiedName ?: StringData::class.simpleName
+            message("Serializer for subclass '$className' is not found in the polymorphic scope of 'Any'")
+            hint("Check if class with serial name '$className' exists and serializer is registered in a corresponding SerializersModule.")
+            serialName(className)
         }
     }
 }

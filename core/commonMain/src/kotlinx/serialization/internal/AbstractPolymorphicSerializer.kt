@@ -113,4 +113,4 @@ internal fun throwSubtypeNotRegistered(subClassName: String?, baseClass: KClass<
 
 @JvmName("throwSubtypeNotRegistered")
 internal fun throwSubtypeNotRegistered(subClass: KClass<*>, baseClass: KClass<*>): Nothing =
-    throwSubtypeNotRegistered(subClass.simpleName ?: "$subClass", baseClass)
+    throwSubtypeNotRegistered(subClass.qualifiedName ?: subClass.simpleName ?: "$subClass", baseClass)
